@@ -7,11 +7,13 @@ function Navbar() {
         </h1>
 
         <ul className="flex space-x-6 text-gray-700 font-medium">
-          <li className="hover:text-blue-600 cursor-pointer">Home</li>
-          <li className="hover:text-blue-600 cursor-pointer">About</li>
-          <li className="hover:text-blue-600 cursor-pointer">Projects</li>
-          <li className="hover:text-blue-600 cursor-pointer">Publications</li>
-          <li className="hover:text-blue-600 cursor-pointer">Contact</li>
+          <li><a href="#" className="hover:text-blue-600 cursor-pointer">Home</a></li>
+          <li><a href="#about" className="hover:text-blue-600 cursor-pointer">About</a></li>
+          <li><a href="#projects" className="hover:text-blue-600 cursor-pointer">Projects</a></li>
+          <li><a href="#publications" className="hover:text-blue-600 cursor-pointer">Publications</a></li>
+          <li><a href="#contact" className="hover:text-blue-600 cursor-pointer">Contact</a></li>
+          <li><a href="#achievements" className="hover:text-blue-600 cursor-pointer">Achievements</a></li>
+
         </ul>
       </div>
     </nav>
