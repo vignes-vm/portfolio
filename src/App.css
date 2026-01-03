@@ -1,3 +1,35 @@
-h1{
-  color:aqua;
+/* Main app styles for fixed navbar layout */
+.app {
+  margin: 0;
+  padding: 0;
+}
+
+/* Ensure smooth scrolling for navigation links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Offset scroll position for fixed navbar */
+section {
+  scroll-margin-top: 4rem; /* Offset for fixed navbar */
+}
+
+/* Prevent content jumping when navbar appears/disappears */
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Ensure all sections are visible */
+main {
+  position: relative;
+  z-index: 1;
+}
+
+/* Make sure the navbar doesn't interfere with content */
+nav {
+  position: fixed !important;
+  top: 0 !important;
+  z-index: 1000 !important;
 }

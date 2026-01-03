@@ -8,21 +8,24 @@ import Achievements from "./components/Achievements"
 import Blog from "./components/Blog"
 import Contact from "./components/Contact"
 import Footer from "./components/Footer"
+import './App.css'
 
 function App() {
   return (
-    <>
+    <div className="app">
       <Navbar />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Publications />
-      <Achievements />
-      <Blog />
-      <Contact />
-      <Footer />
-    </>
+      <main className="pt-16">
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Publications />
+        <Achievements />
+        <Blog />
+        <Contact />
+        <Footer />
+      </main>
+    </div>
   )
 }
 

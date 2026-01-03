@@ -1,20 +1,12 @@
 const publications = [
   {
-    title: "AI-Driven Decision Support for Smart Agriculture",
-    venue: "International Conference on Applied AI",
-    year: 2024,
+    title: "AI-driven cybersecurity framework for anomaly detection in power systems",
+    venue: "Nature - Scientific Reports",
+    year: 2025,
     description:
-      "This paper presents an integrated AI framework for yield prediction, soil analysis, and market intelligence in agriculture.",
-    link: "https://example.com/publication-link"
+      "The rapid evolution of smart grid infrastructure, powered by the integration of IoT and automation technologies, has simultaneously amplified the sophistication and frequency of cyber threats. Critical vulnerabilities such as False Data Injection Attacks (FDIA), Denial-of-Service (DoS), and Man-in-the-Middle (MiTM) attacks pose significant risks to the reliable and secure operation of power systems. Traditional rule-based security mechanisms are increasingly inadequate, lacking both contextual awareness and real-time adaptability. This paper introduces a precision-engineered AI-driven cybersecurity framework that fuses cyber and physical datasets to enable high-accuracy anomaly detection in power systems. Leveraging Long Short-Term Memory (LSTM) networks and Random Forest classifiers, the proposed framework achieves 99.798% accuracy in binary classification and 98.1919% accuracy in multi-class classification tasks. Interpretability is enhanced through SHapley Additive exPlanations (SHAP), which clarify feature contributions to model predictions. Robustness against adversarial threats is achieved using Fast Gradient Sign Method (FGSM)-based adversarial training, improving adversarial accuracy from 95.15 to 99.39%. The system’s practical viability is demonstrated via deployment on the Xilinx PYNQ-Z2 edge device, completing model inference in just 2.16 seconds. These results underscore the framework’s efficacy, explainability, and operational resilience, making it well-suited for real-time deployment in smart grid environments.",
+    link: "https://www.nature.com/articles/s41598-025-19634-y"
   },
-  {
-    title: "Visualizing High-Dimensional Data using PCA",
-    venue: "Journal of Data Science Applications",
-    year: 2023,
-    description:
-      "An intuitive approach to PCA visualization with interactive projections for educational and analytical use.",
-    link: "https://example.com/publication-link"
-  }
 ]
 
 export default publications

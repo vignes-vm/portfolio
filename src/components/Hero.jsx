@@ -1,6 +1,6 @@
 function Hero() {
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gray-900 text-white px-6">
+    <section id="home" className="min-h-screen flex items-center justify-center bg-gray-900 text-white px-6">
       <div className="text-center max-w-3xl">
         <h1 className="text-5xl font-extrabold mb-6">
           Hi, I’m Vikki
@@ -11,7 +11,7 @@ function Hero() {
         </p>
 
         <div className="flex justify-center space-x-4">
-          <button className="px-6 py-3 bg-blue-600 rounded-lg font-semibold hover:bg-blue-700">
+          <button onClick={() => document.getElementById('projects').scrollIntoView()} className="px-6 py-3 bg-blue-600 rounded-lg font-semibold hover:bg-blue-700">
             View Projects
           </button>
 
