@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Tilt from "react-parallax-tilt";
-import { Github, Linkedin, Mail, MousePointer2 } from "lucide-react";
-import { PERSONAL } from "@/lib/portfolio-data";
+import { Mail, MousePointer2 } from "lucide-react";
+import { FaGithub as Github, FaLinkedin as Linkedin } from "react-icons/fa";
+import { PERSONAL } from "../../lib/portfolio-data";
 import { smoothScrollTo, useCountUp } from "./utils";
 
 const TYPING = ["Full Stack Developer", "AI Engineer", "Flutter Developer", "Open Source Contributor"];

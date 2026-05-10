@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { SKILL_CATEGORIES, TECH_PILLS } from "@/lib/portfolio-data";
+import { SKILL_CATEGORIES, TECH_PILLS } from "../../lib/portfolio-data";
 import { SectionTitle } from "./utils";
 
 const TABS = Object.keys(SKILL_CATEGORIES) as (keyof typeof SKILL_CATEGORIES)[];
