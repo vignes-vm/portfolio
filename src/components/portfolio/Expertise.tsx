@@ -11,7 +11,7 @@ const CARDS = [
     tags: ["Deep Learning","RL","Gen AI","SAC"] },
   { Icon: Shield, title: "Cybersecurity", grad: "linear-gradient(135deg, var(--accent-secondary), var(--accent))",
     desc: "Research-backed expertise in AI-driven anomaly detection for critical infrastructure. Published framework achieving 99.8% accuracy detecting advanced cyber-physical attacks on smart power grids.",
-    tags: ["Anomaly Detection","Smart Grid","IDS","Springer"] },
+    tags: ["Anomaly Detection","Smart Grid","IDS"] },
   { Icon: Smartphone, title: "Mobile Development", grad: "linear-gradient(135deg, #00FF88, #00D4FF)",
     desc: "Developing cross-platform mobile experiences with Flutter and Dart. Built gamified productivity tools and AI-powered multimodal apps delivering emotionally-aware user experiences on iOS and Android.",
     tags: ["Flutter","Dart","Kotlin","Cross-Platform"] },

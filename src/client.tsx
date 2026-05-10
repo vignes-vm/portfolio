@@ -33,9 +33,34 @@ function App() {
   )
 }
 
-const root = document.getElementById('root')
-if (root) {
-  createRoot(root).render(<App />)
+const container = document.getElementById('root')
+if (container) {
+  // Avoid calling createRoot twice during HMR or if the app is already mounted.
+  // Store the root on the container and on window to persist across HMR updates.
+  // @ts-ignore
+  const existingRoot = (container as any).__reactRoot || (window as any).__REACT_ROOT__;
+  if (existingRoot && typeof existingRoot.render === 'function') {
+    existingRoot.render(<App />);
+  } else {
+    try {
+      const root = createRoot(container);
+      // @ts-ignore
+      container.__reactRoot = root;
+      // @ts-ignore
+      window.__REACT_ROOT__ = root;
+      root.render(<App />);
+    } catch (err) {
+      // If createRoot fails because React already mounted this container, try to reuse the stored root.
+      // @ts-ignore
+      const fallback = (window as any).__REACT_ROOT__ || (container as any).__reactRoot;
+      if (fallback && typeof fallback.render === 'function') {
+        fallback.render(<App />);
+      } else {
+        // eslint-disable-next-line no-console
+        console.warn('createRoot failed and no existing root to reuse:', err);
+      }
+    }
+  }
 }
 
-export {}
+export {};

@@ -38,7 +38,7 @@ export function LiveApps() {
         </p>
 
         <div className="grid lg:grid-cols-3 gap-6">
-          {APPS.map((app, idx) => (
+          {/* {APPS.map((app, idx) => (
             <motion.div
               key={app.name}
               initial={{ y: 40, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }}
@@ -75,7 +75,7 @@ export function LiveApps() {
                 </button>
               </div>
             </motion.div>
-          ))}
+          ))} */}
 
           {/* Coming soon */}
           <motion.div
@@ -97,7 +97,7 @@ export function LiveApps() {
               </div>
             </div>
             <div className="p-5">
-              <h3 className="font-display font-semibold mb-2" style={{ fontSize: "1.15rem", color: "var(--text-primary)" }}>More Projects Incoming</h3>
+              <h3 className="font-display font-semibold mb-2" style={{ fontSize: "1.15rem", color: "var(--text-primary)" }}>Projects Incoming in Development</h3>
               <p className="text-sm mb-4" style={{ color: "var(--text-secondary)" }}>Several projects in active development. Follow GitHub for updates.</p>
               <a href="https://github.com/vignes-vm" target="_blank" rel="noopener noreferrer"
                  className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-bold"
