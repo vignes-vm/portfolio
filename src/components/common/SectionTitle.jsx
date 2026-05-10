@@ -9,7 +9,13 @@ const SectionTitle = ({ title, subtitle }) => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent mb-4"
+        className="text-4xl md:text-5xl font-bold mb-4"
+        style={{
+          background: 'linear-gradient(135deg, var(--accent), var(--accent-secondary))',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+        }}
       >
         {title}
       </motion.h2>
@@ -19,7 +25,8 @@ const SectionTitle = ({ title, subtitle }) => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-slate-400 text-lg max-w-2xl mx-auto"
+          className="text-lg max-w-2xl mx-auto"
+          style={{ color: 'var(--text-secondary)' }}
         >
           {subtitle}
         </motion.p>
@@ -29,7 +36,8 @@ const SectionTitle = ({ title, subtitle }) => {
         whileInView={{ scaleX: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        className="h-1 w-24 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto mt-4 rounded-full"
+        className="h-1 w-24 mx-auto mt-4 rounded-full"
+        style={{ background: 'linear-gradient(135deg, var(--accent), var(--accent-secondary))' }}
       />
     </div>
   );

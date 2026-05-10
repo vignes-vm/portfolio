@@ -11,13 +11,14 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-slate-950"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      style={{ backgroundColor: 'var(--bg-primary)' }}
     >
       {/* Animated background blobs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -left-40 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-cyan-600/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '0.5s' }} />
+        <div className="absolute -top-40 -left-40 w-96 h-96 rounded-full blur-3xl animate-pulse" style={{ background: 'radial-gradient(circle, var(--accent)/20, transparent)' }} />
+        <div className="absolute -bottom-40 -right-40 w-96 h-96 rounded-full blur-3xl animate-pulse" style={{ background: 'radial-gradient(circle, var(--accent-secondary)/20, transparent)', animationDelay: '1s' }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full blur-3xl animate-pulse" style={{ background: 'radial-gradient(circle, var(--accent)/10, transparent)', animationDelay: '0.5s' }} />
       </div>
 
       {/* Grid overlay */}
@@ -25,7 +26,7 @@ const Hero = () => {
         className="absolute inset-0 opacity-5"
         style={{
           backgroundImage:
-            'linear-gradient(rgba(139,92,246,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(139,92,246,0.3) 1px, transparent 1px)',
+            'linear-gradient(var(--accent) 1px, transparent 1px), linear-gradient(90deg, var(--accent) 1px, transparent 1px)',
           backgroundSize: '50px 50px',
         }}
       />
@@ -36,9 +37,14 @@ const Hero = () => {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-300 text-sm font-medium mb-8 backdrop-blur-sm"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border backdrop-blur-sm text-sm font-medium mb-8"
+          style={{
+            borderColor: 'var(--accent)',
+            backgroundColor: `rgba(var(--accent-rgb), 0.1)`,
+            color: 'var(--accent)',
+          }}
         >
-          <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+          <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: 'var(--accent-secondary)' }} />
           Available for opportunities
         </motion.div>
 
@@ -47,10 +53,11 @@ const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight tracking-tight"
+          className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight tracking-tight"
+          style={{ color: 'var(--text-primary)' }}
         >
           Hi, I'm{' '}
-          <span className="bg-gradient-to-r from-blue-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">
+          <span style={{ background: 'linear-gradient(135deg, var(--accent), var(--accent-secondary))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
             {name}
           </span>
         </motion.h1>
@@ -60,7 +67,8 @@ const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="text-xl md:text-3xl text-slate-300 font-semibold mb-6 h-12 flex items-center justify-center"
+          className="text-xl md:text-3xl font-semibold mb-6 h-12 flex items-center justify-center"
+          style={{ color: 'var(--text-secondary)' }}
         >
           <TypeAnimation
             sequence={[
@@ -76,7 +84,12 @@ const Hero = () => {
             wrapper="span"
             speed={50}
             repeat={Infinity}
-            className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent"
+            style={{
+              background: 'linear-gradient(135deg, var(--accent), var(--accent-secondary))',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}
           />
         </motion.div>
 
@@ -85,7 +98,8 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.5 }}
-          className="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed mb-10"
+          className="text-lg max-w-2xl mx-auto leading-relaxed mb-10"
+          style={{ color: 'var(--text-secondary)' }}
         >
           {bio}
         </motion.p>
@@ -100,7 +114,11 @@ const Hero = () => {
           <Link to="projects" smooth duration={600} offset={-80}>
             <button
               id="hero-view-projects-btn"
-              className="px-8 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold hover:from-blue-500 hover:to-cyan-500 transition-all duration-300 shadow-lg hover:shadow-blue-500/25 hover:scale-105 cursor-pointer"
+              className="px-8 py-3 rounded-xl text-white font-semibold hover:scale-105 transition-all duration-300 shadow-lg cursor-pointer"
+              style={{
+                background: 'linear-gradient(135deg, var(--accent), var(--accent-secondary))',
+                boxShadow: 'var(--glow-accent)',
+              }}
             >
               View Projects
             </button>
@@ -108,7 +126,21 @@ const Hero = () => {
           <Link to="contact" smooth duration={600} offset={-80}>
             <button
               id="hero-contact-btn"
-              className="px-8 py-3 rounded-xl border border-slate-600 text-slate-300 font-semibold hover:border-blue-500 hover:text-white transition-all duration-300 hover:bg-blue-500/10 cursor-pointer"
+              className="px-8 py-3 rounded-xl font-semibold transition-all duration-300 cursor-pointer"
+              style={{
+                border: '1px solid var(--border)',
+                color: 'var(--text-primary)',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = 'var(--accent)';
+                e.currentTarget.style.backgroundColor = 'var(--accent-secondary)';
+                e.currentTarget.style.color = 'var(--bg-primary)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = 'var(--border)';
+                e.currentTarget.style.backgroundColor = 'transparent';
+                e.currentTarget.style.color = 'var(--text-primary)';
+              }}
             >
               Contact Me
             </button>
@@ -133,7 +165,21 @@ const Hero = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={label}
-              className="w-11 h-11 rounded-xl border border-slate-700 flex items-center justify-center text-slate-400 hover:text-white hover:border-blue-500 hover:bg-blue-500/10 transition-all duration-300 hover:scale-110"
+              className="w-11 h-11 rounded-xl border flex items-center justify-center transition-all duration-300 hover:scale-110"
+              style={{
+                borderColor: 'var(--border)',
+                color: 'var(--text-secondary)',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = 'var(--accent)';
+                e.currentTarget.style.color = 'var(--accent)';
+                e.currentTarget.style.backgroundColor = `rgba(var(--accent-rgb), 0.1)`;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = 'var(--border)';
+                e.currentTarget.style.color = 'var(--text-secondary)';
+                e.currentTarget.style.backgroundColor = 'transparent';
+              }}
             >
               {icon}
             </a>
@@ -144,7 +190,8 @@ const Hero = () => {
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="flex flex-col items-center text-slate-500 text-sm gap-2"
+          className="flex flex-col items-center text-sm gap-2"
+          style={{ color: 'var(--text-muted)' }}
         >
           <span>Scroll to explore</span>
           <FiArrowDown size={18} />
