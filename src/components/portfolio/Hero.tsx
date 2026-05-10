@@ -6,7 +6,7 @@ import { FaGithub as Github, FaLinkedin as Linkedin } from "react-icons/fa";
 import { PERSONAL } from "../../lib/portfolio-data";
 import { smoothScrollTo, useCountUp } from "./utils";
 
-const TYPING = ["Full Stack Developer", "AI Engineer", "Flutter Developer", "Open Source Contributor"];
+const TYPING = ["An AI Engineer", "A Full Stack Developer", "A Flutter Developer", "An Open Source Contributor"];
 
 function Typer() {
   const [i, setI] = useState(0);
@@ -55,7 +55,7 @@ function StatPill({ value, label, decimals = 0, suffix = "" }: { value: number; 
 }
 
 export function Hero() {
-  const name = "Vignes V M";
+  const name = "Vignes  V M";
   const letters = name.split("");
 
   return (
@@ -146,7 +146,9 @@ export function Hero() {
               View My Work
             </button>
             <a
-              href="#"
+              href="/public/resume.pdf"
+              download="Vignes_Resume.pdf"
+              aria-label="Download resume"
               className="px-8 py-3 rounded-lg font-bold text-center transition-colors"
               style={{ border: "2px solid var(--accent)", color: "var(--accent)" }}
             >
