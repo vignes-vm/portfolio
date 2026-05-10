@@ -1,15 +1,382 @@
+/* ============================================================
+   DESIGN SYSTEM — Vignes V M Portfolio
+   Tailwind CSS v4 · Space Grotesk · Syne · JetBrains Mono
+   ============================================================ */
+
 @import "tailwindcss";
 
+/* ── Tailwind v4 theme extension ──────────────────────────── */
+@theme {
+  --color-bg-primary:        var(--bg-primary);
+  --color-bg-secondary:      var(--bg-secondary);
+  --color-bg-card:           var(--bg-card);
+  --color-bg-card-hover:     var(--bg-card-hover);
+  --color-border-default:    var(--border);
+  --color-border-accent:     var(--border-accent);
+  --color-text-primary:      var(--text-primary);
+  --color-text-secondary:    var(--text-secondary);
+  --color-text-muted:        var(--text-muted);
+  --color-accent:            var(--accent);
+  --color-accent-hover:      var(--accent-hover);
+  --color-accent-secondary:  var(--accent-secondary);
+  --color-accent-tertiary:   var(--accent-tertiary);
+
+  --font-sans:  'Space Grotesk', sans-serif;
+  --font-display: 'Syne', sans-serif;
+  --font-mono:  'JetBrains Mono', monospace;
+}
+
+/* ── CSS Custom Properties — Dark theme (default) ─────────── */
+:root {
+  /* Backgrounds */
+  --bg-primary:        #080C14;
+  --bg-secondary:      #0D1421;
+  --bg-card:           #111827;
+  --bg-card-hover:     #1A2235;
+
+  /* Borders */
+  --border:            #1E2D45;
+  --border-accent:     #2A4060;
+
+  /* Text */
+  --text-primary:      #F0F4FF;
+  --text-secondary:    #8BA3C7;
+  --text-muted:        #4A6080;
+
+  /* Accents — NO purple, NO violet */
+  --accent:            #00D4FF;
+  --accent-hover:      #00AACC;
+  --accent-secondary:  #00FF88;
+  --accent-tertiary:   #FF6B35;
+
+  /* Gradients */
+  --gradient-1: linear-gradient(135deg, #00D4FF, #00FF88);
+  --gradient-2: linear-gradient(135deg, #FF6B35, #00D4FF);
+
+  /* Glows */
+  --glow-accent: 0 0 30px rgba(0, 212, 255, 0.3);
+  --glow-green:  0 0 30px rgba(0, 255, 136, 0.2);
+
+  /* Shadows */
+  --shadow-card:     0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-elevated: 0 8px 48px rgba(0, 0, 0, 0.6);
+}
+
+/* ── Light theme override class (applied to <body>) ────────── */
+body.light-theme {
+  --bg-primary:        #F5F7FA;
+  --bg-secondary:      #FFFFFF;
+  --bg-card:           #FFFFFF;
+  --bg-card-hover:     #F0F4FF;
+
+  --border:            #E2E8F0;
+  --border-accent:     #CBD5E1;
+
+  --text-primary:      #0A0F1E;
+  --text-secondary:    #4A5568;
+  --text-muted:        #9BA3AF;
+
+  --accent:            #0099CC;
+  --accent-hover:      #007AA3;
+  --accent-secondary:  #00AA66;
+  --accent-tertiary:   #E8501A;
+
+  --gradient-1: linear-gradient(135deg, #0099CC, #00AA66);
+  --gradient-2: linear-gradient(135deg, #E8501A, #0099CC);
+
+  --glow-accent: 0 0 20px rgba(0, 153, 204, 0.2);
+  --glow-green:  0 0 20px rgba(0, 170, 102, 0.15);
+
+  --shadow-card:     0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-elevated: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* ── Box-sizing reset ─────────────────────────────────────── */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+/* ── Base styles ─────────────────────────────────────────── */
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Space Grotesk', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  position: relative;
+}
+
+/* ── Animated radial-gradient background blobs on body ─────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 60% 40% at 0% 0%,   rgba(0, 212, 255, 0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 35% at 100% 0%,  rgba(0, 255, 136, 0.04) 0%, transparent 55%),
+    radial-gradient(ellipse 55% 40% at 100% 100%, rgba(255, 107, 53, 0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 35% at 0% 100%,  rgba(0, 212, 255, 0.04) 0%, transparent 55%);
+}
+
+/* Ensure all page content sits above the background */
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Scrollbar ───────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-hover);
+}
+
+/* ── Text selection ──────────────────────────────────────── */
+::selection {
+  background: rgba(0, 212, 255, 0.3);
+  color: var(--text-primary);
+}
+
+/* ── Global utility classes ──────────────────────────────── */
+
+/* Layout */
+.section-padding {
+  padding: 5rem 1.5rem;
+}
+
+.container-max {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: var(--gradient-1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-alt {
+  background: var(--gradient-2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass card */
+.card-glass {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.card-glass:hover {
+  border-color: var(--accent);
+  box-shadow: var(--glow-accent);
+  transform: translateY(-4px);
+}
+
+/* Glow border */
+.glow-border {
+  border: 1px solid var(--accent);
+  box-shadow: var(--glow-accent);
+}
+
+/* Accent button */
+.btn-accent {
+  background: var(--accent);
+  color: var(--bg-primary);
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  padding: 0.75rem 1.75rem;
+  cursor: pointer;
+  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.btn-accent:hover {
+  background: var(--accent-hover);
+  box-shadow: var(--glow-accent);
+  transform: translateY(-2px);
+}
+
+/* Outline button */
+.btn-outline {
+  background: transparent;
+  color: var(--text-primary);
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  border: 1px solid var(--border-accent);
+  border-radius: 10px;
+  padding: 0.75rem 1.75rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.btn-outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: var(--glow-accent);
+  transform: translateY(-2px);
+}
+
+/* Tag / pill badge */
+.tag {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  background: rgba(0, 212, 255, 0.08);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-family: 'JetBrains Mono', monospace;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.tag:hover {
+  background: rgba(0, 212, 255, 0.15);
+  border-color: var(--accent);
+}
+
+/* Tag variant — green */
+.tag-green {
+  background: rgba(0, 255, 136, 0.08);
+  border-color: rgba(0, 255, 136, 0.2);
+  color: var(--accent-secondary);
+}
+
+.tag-green:hover {
+  background: rgba(0, 255, 136, 0.15);
+  border-color: var(--accent-secondary);
+}
+
+/* Tag variant — orange */
+.tag-orange {
+  background: rgba(255, 107, 53, 0.08);
+  border-color: rgba(255, 107, 53, 0.2);
+  color: var(--accent-tertiary);
+}
+
+.tag-orange:hover {
+  background: rgba(255, 107, 53, 0.15);
+  border-color: var(--accent-tertiary);
+}
+
+/* Monospace inline code */
+.code-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875em;
+  color: var(--accent);
+}
+
+/* Display heading font helper */
+.font-display {
+  font-family: 'Syne', sans-serif;
+}
+
+/* Divider with accent glow */
+.divider {
+  width: 3rem;
+  height: 2px;
+  background: var(--gradient-1);
+  border-radius: 2px;
+  box-shadow: var(--glow-accent);
+}
+
+/* Icon box */
+.icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 10px;
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  color: var(--accent);
+  transition: all 0.2s ease;
+}
+
+.icon-box:hover {
+  background: rgba(0, 212, 255, 0.2);
+  border-color: var(--accent);
+  box-shadow: var(--glow-accent);
+}
+
+/* Social icon links */
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 10px;
+  border: 1px solid var(--border-accent);
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+}
+
+.social-link:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: var(--glow-accent);
+  transform: translateY(-2px);
+}
+
+/* Input field */
+.input-field {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-field::placeholder {
+  color: var(--text-muted);
+}
+
+.input-field:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.12);
+}
+
+/* Section label / overline text */
+.section-overline {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
 }

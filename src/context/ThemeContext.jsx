@@ -6,7 +6,12 @@ export const ThemeProvider = ({ children }) => {
   const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
-    document.documentElement.classList.toggle('dark', isDark);
+    // Dark is default (:root). Light mode adds .light-theme to body.
+    if (isDark) {
+      document.body.classList.remove('light-theme');
+    } else {
+      document.body.classList.add('light-theme');
+    }
   }, [isDark]);
 
   const toggleTheme = () => setIsDark((prev) => !prev);
