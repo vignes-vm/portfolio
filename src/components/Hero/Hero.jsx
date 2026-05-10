@@ -2,9 +2,201 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import { Link } from 'react-scroll';
-import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaUser } from 'react-icons/fa';
 import { FiArrowDown } from 'react-icons/fi';
+import Tilt from 'react-parallax-tilt';
 import { portfolioData } from '../../data/portfolioData';
+
+// 3D Interactive Image Card Component
+const HeroImageCard = () => {
+  return (
+    <motion.div
+      initial={{ x: 80, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      transition={{ duration: 0.8, delay: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+      className="relative w-full max-w-md mx-auto lg:mx-0"
+    >
+      {/* Decorative rotating rings */}
+      <div className="hidden lg:block absolute inset-0 flex items-center justify-center pointer-events-none" style={{ zIndex: 0 }}>
+        {/* Outer ring - rotating clockwise */}
+        <motion.svg
+          className="absolute"
+          width="500"
+          height="500"
+          viewBox="0 0 500 500"
+          style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}
+          animate={{ rotate: 360 }}
+          transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+        >
+          <circle
+            cx="250"
+            cy="250"
+            r="250"
+            fill="none"
+            stroke="var(--accent)"
+            strokeWidth="2"
+            strokeDasharray="4 8"
+            opacity="0.1"
+          />
+        </motion.svg>
+
+        {/* Inner ring - rotating counter-clockwise */}
+        <motion.svg
+          className="absolute"
+          width="420"
+          height="420"
+          viewBox="0 0 420 420"
+          style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}
+          animate={{ rotate: -360 }}
+          transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
+        >
+          <circle
+            cx="210"
+            cy="210"
+            r="210"
+            fill="none"
+            stroke="var(--accent-secondary)"
+            strokeWidth="2"
+            strokeDasharray="2 6"
+            opacity="0.08"
+          />
+        </motion.svg>
+      </div>
+
+      {/* Tilt card wrapper */}
+      <Tilt
+        tiltMaxAngleX={15}
+        tiltMaxAngleY={15}
+        perspective={1000}
+        glareEnable={true}
+        glareMaxOpacity={0.15}
+        glareColor="rgba(0,212,255,0.3)"
+        glareBorderRadius="24px"
+        scale={1.02}
+        className="h-full"
+      >
+        <div className="relative w-96 h-96 lg:w-96 lg:h-96 sm:w-80 sm:h-80 xs:w-72 xs:h-72 mx-auto" style={{ perspective: '1000px' }}>
+          {/* Gradient ring background (z-index -1 relative to card) */}
+          <div
+            className="absolute inset-0 rounded-full pointer-events-none"
+            style={{
+              inset: '-16px',
+              borderRadius: '112px',
+              background: `linear-gradient(135deg, var(--accent), var(--accent-secondary))`,
+              zIndex: -1,
+              opacity: 0.7,
+              filter: 'blur(8px)',
+            }}
+          />
+
+          {/* Base card container */}
+          <div
+            className="relative w-full h-full rounded-3xl overflow-hidden border-2"
+            style={{
+              backgroundColor: 'var(--bg-card)',
+              borderColor: 'var(--border)',
+              zIndex: 1,
+            }}
+          >
+            {/* Profile image or gradient placeholder */}
+            <div
+              className="w-full h-full flex items-center justify-center rounded-3xl overflow-hidden"
+              style={{
+                background: 'linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%)',
+              }}
+            >
+              {/* Image slot - Replace with your actual photo */}
+              <img
+                src="/assets/images/profile.png"
+                alt="Profile"
+                className="w-full h-full object-cover rounded-3xl"
+                style={{ display: 'none' }} // Hidden until image loads
+                onLoad={(e) => (e.target.style.display = 'block')}
+              />
+
+              {/* Fallback placeholder with icon */}
+              <div className="flex flex-col items-center justify-center gap-4">
+                <FaUser
+                  size={80}
+                  style={{ color: 'rgba(255, 255, 255, 0.3)' }}
+                />
+                <p style={{ color: 'rgba(255, 255, 255, 0.4)' }} className="text-sm text-center">
+                  Photo Placeholder
+                </p>
+              </div>
+            </div>
+
+            {/* Overlay shimmer */}
+            <div
+              className="absolute inset-0 pointer-events-none rounded-3xl"
+              style={{
+                background:
+                  'linear-gradient(135deg, transparent 40%, rgba(0,212,255,0.05) 100%)',
+              }}
+            />
+          </div>
+        </div>
+      </Tilt>
+
+      {/* Floating Badge 1 — Top-left */}
+      <motion.div
+        className="absolute -top-6 -left-8 lg:-left-16 z-20"
+        animate={{ y: [0, -8, 0] }}
+        transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+      >
+        <div
+          className="px-3 py-2 rounded-lg border text-sm font-medium whitespace-nowrap"
+          style={{
+            backgroundColor: 'var(--bg-card)',
+            borderColor: 'var(--accent)',
+            color: 'var(--text-primary)',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+          }}
+        >
+          🤖 AI Engineer
+        </div>
+      </motion.div>
+
+      {/* Floating Badge 2 — Bottom-right */}
+      <motion.div
+        className="absolute -bottom-6 -right-4 lg:-right-8 z-20"
+        animate={{ y: [0, 8, 0] }}
+        transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+      >
+        <div
+          className="px-3 py-2 rounded-lg border text-sm font-medium whitespace-nowrap"
+          style={{
+            backgroundColor: 'var(--bg-card)',
+            borderColor: 'var(--accent-secondary)',
+            color: 'var(--text-primary)',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+          }}
+        >
+          ⚡ 7+ Projects
+        </div>
+      </motion.div>
+
+      {/* Floating Badge 3 — Top-right (smaller) */}
+      <motion.div
+        className="absolute -top-3 -right-6 lg:-right-12 z-20 transform scale-75 lg:scale-100"
+        animate={{ y: [0, -6, 0] }}
+        transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
+      >
+        <div
+          className="px-3 py-2 rounded-lg border text-sm font-medium whitespace-nowrap"
+          style={{
+            backgroundColor: 'var(--bg-card)',
+            borderColor: 'var(--accent-tertiary)',
+            color: 'var(--text-primary)',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+          }}
+        >
+          📄 Published
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+};
 
 const Hero = () => {
   const { name, bio, github, linkedin, email } = portfolioData;
@@ -57,10 +249,10 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      className="min-h-screen flex items-center justify-center relative"
       style={{ backgroundColor: 'var(--bg-primary)' }}
     >
-      {/* Decorative background blobs */}
+      {/* Overflow wrapper for background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 0 }}>
         {/* Top-left blob */}
         <div
@@ -313,41 +505,8 @@ const Hero = () => {
               </motion.div>
             </motion.div>
 
-            {/* RIGHT COLUMN — Image placeholder */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="hidden lg:flex items-center justify-center"
-            >
-              <div
-                className="w-full h-auto aspect-square rounded-2xl border-2 flex items-center justify-center relative overflow-hidden group max-w-md"
-                style={{
-                  backgroundColor: 'var(--bg-card)',
-                  borderColor: 'var(--border)',
-                }}
-              >
-                <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500"
-                  style={{
-                    background: 'linear-gradient(135deg, var(--accent), var(--accent-secondary))',
-                  }}
-                />
-                <div className="relative text-center px-8">
-                  <div
-                    className="text-8xl lg:text-9xl mb-6"
-                    style={{ color: 'var(--accent)' }}
-                  >
-                    🎨
-                  </div>
-                  <p style={{ color: 'var(--text-secondary)' }} className="text-base lg:text-lg">
-                    3D Image Card
-                    <br />
-                    <span className="text-sm">(Coming Soon)</span>
-                  </p>
-                </div>
-              </div>
-            </motion.div>
+            {/* RIGHT COLUMN — 3D Interactive Image Card */}
+            <HeroImageCard />
           </div>
         </div>
       </div>
