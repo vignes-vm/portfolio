@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import Tilt from "react-parallax-tilt";
 import { Mail, MousePointer2 } from "lucide-react";
 import { FaGithub as Github, FaLinkedin as Linkedin } from "react-icons/fa";
 import { PERSONAL } from "../../lib/portfolio-data";
 import { smoothScrollTo, useCountUp } from "./utils";
+import ProfileAvatar3D from "./ProfileAvatar3D";
 
 const TYPING = ["An AI Engineer", "A Full Stack Developer", "A Flutter Developer", "An Open Source Contributor"];
 
@@ -59,7 +59,7 @@ export function Hero() {
   const letters = name.split("");
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center pt-[70px] px-6 overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center px-6 overflow-hidden" style={{ paddingTop: "70px" }}>
       {/* Background blobs */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <motion.div
@@ -146,8 +146,8 @@ export function Hero() {
               View My Work
             </button>
             <a
-              href="/public/resume.pdf"
-              download="Vignes_Resume.pdf"
+              href="/resume.pdf"
+              download="Vignes_V_M_Resume.pdf"
               aria-label="Download resume"
               className="px-8 py-3 rounded-lg font-bold text-center transition-colors"
               style={{ border: "2px solid var(--accent)", color: "var(--accent)" }}
@@ -178,7 +178,7 @@ export function Hero() {
           {/* Rings (desktop only) */}
           <svg className="hidden lg:block absolute -z-10" width={500} height={500} style={{ opacity: 0.4 }}>
             <motion.circle
-              cx={250} cy={250} r={246}
+              cx={300} cy={300} r={286}
               fill="none" stroke="var(--accent)" strokeOpacity={0.5}
               strokeWidth={1} strokeDasharray="4 8"
               style={{ transformOrigin: "center" }}
@@ -188,7 +188,7 @@ export function Hero() {
           </svg>
           <svg className="hidden lg:block absolute -z-10" width={420} height={420} style={{ opacity: 0.35 }}>
             <motion.circle
-              cx={210} cy={210} r={206}
+              cx={250} cy={250} r={246}
               fill="none" stroke="var(--accent-secondary)" strokeOpacity={0.4}
               strokeWidth={1} strokeDasharray="2 6"
               style={{ transformOrigin: "center" }}
@@ -196,42 +196,82 @@ export function Hero() {
               transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
             />
           </svg>
+          <div
+  className="relative"
+  style={{
+    width: "min(480px, 90vw)",
+    height: "min(750px, 90vw)",
+  }}
+>
+  {/* Background Glow */}
+  <div
+    className="absolute inset-0 blur-3xl rounded-full"
+    style={{
+      background:
+        "linear-gradient(135deg, rgba(139,92,246,0.45), rgba(6,182,212,0.35))",
+      transform: "scale(1.1)",
+    }}
+  />
 
-          <Tilt tiltMaxAngleX={15} tiltMaxAngleY={15} glareEnable glareMaxOpacity={0.12} scale={1.02} className="relative">
-            <div className="relative" style={{ width: "min(380px, 80vw)", height: "min(380px, 80vw)" }}>
-              <div
-                className="absolute"
-                style={{ inset: -4, borderRadius: 28, background: "var(--gradient-1)", opacity: 0.8, zIndex: -1 }}
-              />
-              <div
-                className="w-full h-full overflow-hidden flex items-center justify-center"
-                style={{ borderRadius: 24, background: "var(--bg-card)", border: "2px solid var(--border)" }}
-              >
-                <div
-                  className="w-full h-full flex items-center justify-center font-display font-extrabold"
-                  style={{ background: "linear-gradient(135deg, var(--accent), var(--accent-secondary))", fontSize: "5rem", color: "white" }}
-                >
-                  VV
-                </div>
-              </div>
+  {/* Glass Container */}
+  <div
+    className="relative w-full h-full rounded-[40px] overflow-hidden"
+    style={{
+      boxShadow:
+        "0 20px 80px rgba(0,0,0,0)",
+    }}
+  >
+    <ProfileAvatar3D />
+  </div>
 
-              <motion.div
-                animate={{ y: [0, -8, 0] }} transition={{ duration: 3, repeat: Infinity }}
-                className="absolute px-3 py-1.5 rounded-lg text-sm font-medium"
-                style={{ top: -20, left: -20, background: "var(--bg-card)", border: "1px solid var(--accent)", color: "var(--text-primary)" }}
-              >🤖 AI Engineer</motion.div>
-              <motion.div
-                animate={{ y: [0, 8, 0] }} transition={{ duration: 4, repeat: Infinity }}
-                className="absolute px-3 py-1.5 rounded-lg text-sm font-medium"
-                style={{ bottom: -20, right: -20, background: "var(--bg-card)", border: "1px solid var(--accent-secondary)", color: "var(--text-primary)" }}
-              >⚡ 7+ Projects</motion.div>
-              <motion.div
-                animate={{ y: [0, -6, 0] }} transition={{ duration: 3.5, repeat: Infinity }}
-                className="absolute px-3 py-1.5 rounded-lg text-xs font-medium"
-                style={{ top: -10, right: -10, background: "var(--bg-card)", border: "1px solid var(--accent-tertiary)", color: "var(--text-primary)" }}
-              >📄 Published</motion.div>
-            </div>
-          </Tilt>
+  {/* Floating Labels (mount animation) */}
+  <motion.div
+    initial="hidden"
+    animate="visible"
+    variants={{
+      hidden: {},
+      visible: { transition: { staggerChildren: 0.12, delayChildren: 0.6 } },
+    }}
+    className="absolute inset-0 pointer-events-none"
+  >
+    <motion.div
+      variants={{ hidden: { opacity: 0, y: 8, scale: 0.98 }, visible: { opacity: 1, y: 0, scale: 1 } }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="absolute top-8 -left-5 px-4 py-2 rounded-xl text-white font-medium"
+      style={{ background: "rgba(15,15,15,0.65)", border: "1px solid #8b5cf6", backdropFilter: "blur(14px)" }}
+    >
+      🤖 A Full-Stack Developer
+    </motion.div>
+
+    <motion.div
+      variants={{ hidden: { opacity: 0, y: 8, scale: 0.98 }, visible: { opacity: 1, y: 0, scale: 1 } }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="absolute top-45 -right-1 px-4 py-2 rounded-xl text-white font-medium"
+      style={{ background: "rgba(15,15,15,0.65)", border: "1px solid #8b5cf6", backdropFilter: "blur(14px)" }}
+    >
+      🤖 An AI Engineer
+    </motion.div>
+
+    <motion.div
+      variants={{ hidden: { opacity: 0, y: 8, scale: 0.98 }, visible: { opacity: 1, y: 0, scale: 1 } }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="absolute bottom-10 -right-10 px-4 py-2 rounded-xl text-white font-medium"
+      style={{ background: "rgba(15,15,15,0.65)", border: "1px solid #06b6d4", backdropFilter: "blur(14px)" }}
+    >
+      ⚡ A Flutter Developer
+    </motion.div>
+
+    <motion.div
+      variants={{ hidden: { opacity: 0, y: 8, scale: 0.98 }, visible: { opacity: 1, y: 0, scale: 1 } }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="absolute bottom-40 -left-20 px-4 py-2 rounded-xl text-white font-medium"
+      style={{ background: "rgba(15,15,15,0.65)", border: "1px solid #06b6d4", backdropFilter: "blur(14px)" }}
+    >
+      ⚡ An Open Source Contributor
+    </motion.div>
+  </motion.div>
+</div>
+          
         </div>
       </div>
 
@@ -239,7 +279,7 @@ export function Hero() {
         initial={{ opacity: 1 }}
         animate={{ opacity: [1, 0.4, 1] }}
         transition={{ duration: 2, repeat: Infinity }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 hidden md:flex"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden md:flex md:flex-col items-center gap-2"
       >
         <MousePointer2 size={18} style={{ color: "var(--text-muted)" }} />
         <span className="text-xs uppercase tracking-widest" style={{ color: "var(--text-muted)" }}>Scroll</span>

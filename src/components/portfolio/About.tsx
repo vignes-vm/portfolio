@@ -66,6 +66,18 @@ export function About() {
                   </div>
                 </div>
               </div>
+              <div className="mt-3">
+                <a
+                  href="https://doi.org/10.1038/s41598-025-19634-y"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Open publication DOI link"
+                  className="block text-center px-4 py-2 rounded-lg font-semibold"
+                  style={{ border: "2px solid var(--accent-tertiary)", color: "var(--accent-tertiary)" }}
+                >
+                  Read Publication
+                </a>
+              </div>
             </div>
           </motion.div>
 
@@ -123,8 +135,13 @@ export function About() {
                    style={{ border: "1px solid var(--border)", color: "var(--text-primary)" }}>
                   <Linkedin size={16} /> {PERSONAL.linkedinHandle}
                 </a>
-                <a href="#" className="block text-center mt-3 px-4 py-2 rounded-lg font-semibold"
-                   style={{ border: "2px solid var(--accent)", color: "var(--accent)" }}>
+                <a
+                  href="/resume.pdf"
+                  download="Vignes_V_M_Resume.pdf"
+                  aria-label="Download resume"
+                  className="block text-center mt-3 px-4 py-2 rounded-lg font-semibold"
+                  style={{ border: "2px solid var(--accent)", color: "var(--accent)" }}
+                >
                   Download Resume
                 </a>
               </div>
