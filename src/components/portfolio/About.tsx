@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import { GraduationCap, MapPin, Mail, Phone, Github, Linkedin, Newspaper, Users, Camera } from "lucide-react";
-import { EDUCATION, PERSONAL } from "@/lib/portfolio-data";
+import { GraduationCap, MapPin, Mail, Phone, Newspaper, Users, Camera } from "lucide-react";
+import { FaGithub as Github, FaLinkedin as Linkedin } from "react-icons/fa";
+import { EDUCATION, PERSONAL } from "../../lib/portfolio-data";
 import { SectionTitle } from "./utils";
 
 export function About() {

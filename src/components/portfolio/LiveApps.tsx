@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Lock, Github } from "lucide-react";
+import { ExternalLink, Lock } from "lucide-react";
+import { FaGithub as Github } from "react-icons/fa";
 import { SectionTitle } from "./utils";
 
 const APPS = [

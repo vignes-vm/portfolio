@@ -1,7 +1,8 @@
 import { useMemo, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Github, ExternalLink, Star } from "lucide-react";
-import { PROJECTS, type Project } from "@/lib/portfolio-data";
+import { ExternalLink, Star } from "lucide-react";
+import { FaGithub as Github } from "react-icons/fa";
+import { PROJECTS, type Project } from "../../lib/portfolio-data";
 import { SectionTitle } from "./utils";
 
 const FILTERS = ["All", "AI/ML", "Web", "Mobile", "Systems"] as const;

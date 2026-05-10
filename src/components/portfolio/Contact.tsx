@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Github, Linkedin, Send, Check } from "lucide-react";
-import { PERSONAL } from "@/lib/portfolio-data";
+import { Mail, Phone, MapPin, Send, Check } from "lucide-react";
+import { FaGithub as Github, FaLinkedin as Linkedin } from "react-icons/fa";
+import { PERSONAL } from "../../lib/portfolio-data";
 import { SectionTitle } from "./utils";
 
 const QUICK_FILLS = ["Collaboration", "Internship", "Just saying hi!"];

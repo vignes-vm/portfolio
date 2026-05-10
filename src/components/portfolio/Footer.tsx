@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Github, Linkedin, Mail, ArrowUp } from "lucide-react";
-import { PERSONAL, NAV_LINKS } from "@/lib/portfolio-data";
+import { Mail, ArrowUp } from "lucide-react";
+import { FaGithub as Github, FaLinkedin as Linkedin } from "react-icons/fa";
+import { PERSONAL, NAV_LINKS } from "../../lib/portfolio-data";
 import { smoothScrollTo } from "./utils";
 
 const FOOTER_LINKS = [...NAV_LINKS, { label: "Live Apps", href: "live-apps" }];

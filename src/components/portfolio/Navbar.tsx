@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence, useScroll } from "framer-motion";
 import { Menu, X, Moon, Sun } from "lucide-react";
-import { NAV_LINKS } from "@/lib/portfolio-data";
+import { NAV_LINKS } from "../../lib/portfolio-data";
 import { smoothScrollTo } from "./utils";
 import { useTheme } from "./ThemeProvider";
 
