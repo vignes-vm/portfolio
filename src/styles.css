@@ -1,0 +1,124 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@theme inline {
+  --font-display: "Syne", sans-serif;
+  --font-sans: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-card: var(--bg-card);
+  --color-bg-card-hover: var(--bg-card-hover);
+  --color-border: var(--border);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-accent: var(--accent);
+  --color-accent-secondary: var(--accent-secondary);
+  --color-accent-tertiary: var(--accent-tertiary);
+}
+
+:root {
+  --bg-primary: #080C14;
+  --bg-secondary: #0D1421;
+  --bg-card: #111827;
+  --bg-card-hover: #1A2235;
+  --border: #1E2D45;
+  --text-primary: #F0F4FF;
+  --text-secondary: #8BA3C7;
+  --text-muted: #4A6080;
+  --accent: #00D4FF;
+  --accent-secondary: #00FF88;
+  --accent-tertiary: #FF6B35;
+  --gradient-1: linear-gradient(135deg, #00D4FF, #00FF88);
+  --gradient-2: linear-gradient(135deg, #FF6B35, #00D4FF);
+  --glow-accent: 0 0 30px rgba(0, 212, 255, 0.3);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+body.light-theme {
+  --bg-primary: #F5F7FA;
+  --bg-secondary: #FFFFFF;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #F0F4FF;
+  --border: #E2E8F0;
+  --text-primary: #0A0F1E;
+  --text-secondary: #4A5568;
+  --text-muted: #9BA3AF;
+  --accent: #0099CC;
+  --accent-secondary: #00AA66;
+  --accent-tertiary: #E8501A;
+  --gradient-1: linear-gradient(135deg, #0099CC, #00AA66);
+  --gradient-2: linear-gradient(135deg, #E8501A, #0099CC);
+  --glow-accent: 0 0 24px rgba(0, 153, 204, 0.25);
+  --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--accent) 30%, transparent);
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-secondary); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@keyframes blink { 0%,100% { opacity: 1 } 50% { opacity: 0 } }
+.cursor-blink { animation: blink 0.7s infinite; }
+
+.gradient-text {
+  background: var(--gradient-1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.card-glass {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+.card-glass:hover {
+  border-color: var(--accent);
+  box-shadow: var(--glow-accent);
+  transform: translateY(-4px);
+}
+
+.dot-grid {
+  background-image: radial-gradient(circle, color-mix(in oklab, var(--accent) 12%, transparent) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.35;
+}
+
+@keyframes float-y { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-12px) } }
+.float-anim { animation: float-y 4s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+@layer base {
+  * { border-color: var(--border); }
+}
