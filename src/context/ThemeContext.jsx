@@ -1,26 +1,37 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 
 const ThemeContext = createContext();
 
-export const ThemeProvider = ({ children }) => {
+export function ThemeProvider({ children }) {
   const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
-    // Dark is default (:root). Light mode adds .light-theme to body.
-    if (isDark) {
-      document.body.classList.remove('light-theme');
-    } else {
+    const saved = localStorage.getItem('vignes-theme');
+    if (saved === 'light') {
+      setIsDark(false);
       document.body.classList.add('light-theme');
     }
-  }, [isDark]);
+  }, []);
 
-  const toggleTheme = () => setIsDark((prev) => !prev);
+  const toggleTheme = () => {
+    setIsDark(prev => {
+      const next = !prev;
+      if (next) {
+        document.body.classList.remove('light-theme');
+        localStorage.setItem('vignes-theme', 'dark');
+      } else {
+        document.body.classList.add('light-theme');
+        localStorage.setItem('vignes-theme', 'light');
+      }
+      return next;
+    });
+  };
 
   return (
     <ThemeContext.Provider value={{ isDark, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );
-};
+}
 
 export const useTheme = () => useContext(ThemeContext);
