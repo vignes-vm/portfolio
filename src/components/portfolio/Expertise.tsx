@@ -70,7 +70,7 @@ export function Expertise() {
         <div className="card-glass p-10 grid grid-cols-2 md:grid-cols-4 gap-6 divide-x" style={{ borderColor: "var(--border)" }}>
           <Stat value={99.8} decimals={1} suffix="%" label="Cyber Detection Accuracy" />
           <Stat value={8.83} decimals={2} label="CGPA" />
-          <Stat value={7} suffix="+" label="Projects Built" />
+          <Stat value={10} suffix="+" label="Projects Built" />
           <Stat value={1} label="Springer Publication" />
         </div>
       </div>

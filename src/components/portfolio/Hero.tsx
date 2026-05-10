@@ -133,7 +133,7 @@ export function Hero() {
 
           <div className="flex flex-wrap gap-3 mb-8">
             <StatPill value={8.83} decimals={2} label="CGPA" />
-            <StatPill value={7} suffix="+" label="Projects" />
+            <StatPill value={10} suffix="+" label="Projects" />
             <StatPill value={1} label="Publication" />
           </div>
 
