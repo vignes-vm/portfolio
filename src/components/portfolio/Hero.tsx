@@ -237,7 +237,7 @@ export function Hero() {
     <motion.div
       variants={{ hidden: { opacity: 0, y: 8, scale: 0.98 }, visible: { opacity: 1, y: 0, scale: 1 } }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="absolute top-8 -left-5 px-4 py-2 rounded-xl text-white font-medium"
+      className="hidden md:block absolute top-8 -left-5 px-4 py-2 rounded-xl text-white font-medium"
       style={{ background: "rgba(15,15,15,0.65)", border: "1px solid #8b5cf6", backdropFilter: "blur(14px)" }}
     >
       🤖 A Full-Stack Developer
@@ -246,7 +246,7 @@ export function Hero() {
     <motion.div
       variants={{ hidden: { opacity: 0, y: 8, scale: 0.98 }, visible: { opacity: 1, y: 0, scale: 1 } }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="absolute top-45 -right-1 px-4 py-2 rounded-xl text-white font-medium"
+      className="hidden md:block absolute top-45 -right-1 px-4 py-2 rounded-xl text-white font-medium"
       style={{ background: "rgba(15,15,15,0.65)", border: "1px solid #8b5cf6", backdropFilter: "blur(14px)" }}
     >
       🤖 An AI Engineer
@@ -255,7 +255,7 @@ export function Hero() {
     <motion.div
       variants={{ hidden: { opacity: 0, y: 8, scale: 0.98 }, visible: { opacity: 1, y: 0, scale: 1 } }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="absolute bottom-10 -right-10 px-4 py-2 rounded-xl text-white font-medium"
+      className="hidden md:block absolute bottom-10 -right-10 px-4 py-2 rounded-xl text-white font-medium"
       style={{ background: "rgba(15,15,15,0.65)", border: "1px solid #06b6d4", backdropFilter: "blur(14px)" }}
     >
       ⚡ A Flutter Developer
@@ -264,7 +264,7 @@ export function Hero() {
     <motion.div
       variants={{ hidden: { opacity: 0, y: 8, scale: 0.98 }, visible: { opacity: 1, y: 0, scale: 1 } }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="absolute bottom-40 -left-20 px-4 py-2 rounded-xl text-white font-medium"
+      className="hidden md:block absolute bottom-40 -left-20 px-4 py-2 rounded-xl text-white font-medium"
       style={{ background: "rgba(15,15,15,0.65)", border: "1px solid #06b6d4", backdropFilter: "blur(14px)" }}
     >
       ⚡ An Open Source Contributor
